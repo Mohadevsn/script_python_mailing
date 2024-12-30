@@ -1,17 +1,17 @@
 import imaplib
 import email
 from email.header import decode_header
+import time
 
-
-def receiveMail():
+def receiveMail(port, user, user_password):
 	imap_server =  "mail.smarttech.sn"
-	imap_port = 993
-	user = "mohamed@smarttech.sn"
-	user_password = "Passer2024@"
+	# imap_port = 993
+	# user = "mohamed@smarttech.sn"
+	# user_password = "Passer2024@"
 	
 
 	try:
-		mail = imaplib.IMAP4_SSL(imap_server, imap_port)
+		mail = imaplib.IMAP4_SSL(imap_server, port)
 		mail.login(user, user_password)
 		print("Connexion reussie")
 
@@ -49,5 +49,18 @@ def receiveMail():
 	except Exception as error:
 		print(f"Erreur lors de la reception: {error}")
 
-receiveMail()
+
+print("Reception d'email")
+print("Veuillez patienter...")
+time.sleep(2)
+print("Veuillez saisir les informations suivantes")
+print("Le nom utilisateur: ")
+user = input()
+print("Le mot de passe: ")
+user_password = input()
+print("Port: ")
+port = input()
+print("Reception en cours...")
+receiveMail(user, user_password, port)
+print("Reception")
 

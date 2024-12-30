@@ -1,6 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import time
 
 def sendMail(subject, body, to):
 	smtp_server = "mail.smarttech.sn"
@@ -31,5 +32,17 @@ def sendMail(subject, body, to):
 	finally:
 		server.quit()
 
+print("Envoi d'email")
+print("Veuillez patienter...")
+time.sleep(2)
 
-sendMail("TEST", "Ceci est un test d'envoi par python", "samba@smarttech.sn")
+print("Veuillez saisir les informations suivantes")
+print("Sujet: ")
+subject = input()
+print("Message: ")
+body = input()
+print("Destinataire: ")
+to = input()
+print("Envoi en cours...")
+sendMail(subject, body, to)
+print("Email envoyé avec succès")
